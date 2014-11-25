@@ -111,3 +111,36 @@ echo "Alias /phpmyadmin \"/usr/local/phpmyadmin/\"
 </Directory>" >> /usr/local/apache2/conf/extra/httpd-phpmyadmin.conf
 echo "Include conf/extra/httpd-phpmyadmin.conf" >> /usr/local/apache2/conf/httpd.conf
 /etc/init.d/httpd restart
+
+#[Openssl]
+# En apache compilar
+./configure --enable-ssl --enable-so
+make
+make install
+vi /usr/local/apache2/conf/httpd.conf
+Include conf/extra/httpd-ssl.conf
+
+vi /usr/local/apache2/conf/extra/httpd-ssl.conf
+
+# egrep 'server.crt|server.key' httpd-ssl.conf
+SSLCertificateFile "/usr/local/apache2/conf/server.crt"
+SSLCertificateKeyFile "/usr/local/apache2/conf/server.key"
+
+cd ~
+openssl genrsa -des3 -out server.key 1024
+
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+cd ~
+cp server.key /usr/local/apache2/conf/
+cp server.crt /usr/local/apache2/conf/
+/usr/local/apache2/bin/apachectl start
+
+Apache/2.2.17 mod_ssl/2.2.17 (Pass Phrase Dialog)
+Some of your private key files are encrypted for security reasons.
+In order to read them you have to provide the pass phrases.
+
+Server www.example.com:443 (RSA)
+Enter pass phrase:
+
+OK: Pass Phrase Dialog successful.
