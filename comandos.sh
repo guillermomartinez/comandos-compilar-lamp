@@ -139,8 +139,10 @@ cp server.crt /usr/local/apache2/conf/
 Apache/2.2.17 mod_ssl/2.2.17 (Pass Phrase Dialog)
 Some of your private key files are encrypted for security reasons.
 In order to read them you have to provide the pass phrases.
-
 Server www.example.com:443 (RSA)
 Enter pass phrase:
-
 OK: Pass Phrase Dialog successful.
+
+# abrimos el puerto 443
+iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables-save > /etc/sysconfig/iptables
