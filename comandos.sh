@@ -142,7 +142,15 @@ In order to read them you have to provide the pass phrases.
 Server www.example.com:443 (RSA)
 Enter pass phrase:
 OK: Pass Phrase Dialog successful.
-
+# para que no pida contraseña
+cd /usr/local/apache2/
+vi ssl.sh
+#!/bin/bash
+echo "pass"
+chmod +x ssl.sh
+vi conf/extra/httpd-ssl.conf
+SSLPassPhraseDialog  exec:/usr/local/apache2/ssl.sh
+ 
 # abrimos el puerto 443
 iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables-save > /etc/sysconfig/iptables
