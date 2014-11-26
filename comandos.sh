@@ -41,7 +41,7 @@ wget http://archive.apache.org/dist/httpd/httpd-2.2.27.tar.gz
 tar zxvf httpd-2.2.27.tar.gz
 cd httpd-2.2.27
 #./configure --prefix=/etc/httpd --exec-prefix=/etc/httpd --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc/httpd/conf --enable-so --enable-dav --enable-dav-fs --enable-dav-lock --enable-suexec --enable-deflate --enable-unique-id --enable-mods-static=most --enable-reqtimeout --with-mpm=prefork --with-suexec-caller=apache --with-suexec-docroot=/ --with-suexec-gidmin=100 --with-suexec-logfile=/var/log/httpd/suexec_log --with-suexec-uidmin=100 --with-suexec-userdir=public_html --with-suexec-bin=/usr/sbin/suexec --with-included-apr --with-pcre=/usr --includedir=/usr/include/apache --libexecdir=/usr/lib/apache --datadir=/var/www --localstatedir=/var --enable-logio --enable-ssl --enable-rewrite --enable-proxy --enable-expires --with-ssl=/usr --enable-headers
-./configure --enable-so
+./configure --enable-so --enable-mods-shared=most
 make
 make install
 ln -s /usr/local/apache2/bin/apachectl /etc/init.d/httpd
