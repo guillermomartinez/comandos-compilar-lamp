@@ -155,7 +155,39 @@ SSLPassPhraseDialog  exec:/usr/local/apache2/ssl.sh
 iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables-save > /etc/sysconfig/iptables
 
-#[samba] compartir de window a linux
+#[samba] 
+yum install samba samba-client samba-common
+chkconfig smb on
+chkconfig nmb on
+service smb restart
+service nmb restart
+iptables -I INPUT 4 -m state --state NEW -m udp -p udp --dport 137 -j ACCEPT
+iptables -I INPUT 5 -m state --state NEW -m udp -p udp --dport 138 -j ACCEPT
+iptables -I INPUT 6 -m state --state NEW -m tcp -p tcp --dport 139 -j ACCEPT
+iptables-save > /etc/sysconfig/iptables
+useradd smbuser 
+groupadd smbgrp 
+usermod -a -G smbgrp smbuser 
+smbpasswd -a smbuser
+
+vi /etc/samba/smb.conf
+[web]
+path = /usr/local/apache2/htdocs
+available = yes
+valid users = smbuser
+read only = no
+browseable = yes
+public = yes
+writable = yes
+write list = smbuser
+create mode = 0660
+directory mode = 0770
+
+#compartir de window a linux
 # mount -t cifs //name-pc/dir-shared /media/shared -o user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
 vi /etc/fstab
 //name-pc/dir-shared /media/shared cifs user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
+
+# other
+visudo
+%admin ALL=(ALL) NOPASSWD:ALL
