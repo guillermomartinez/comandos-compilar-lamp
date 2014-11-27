@@ -154,3 +154,8 @@ SSLPassPhraseDialog  exec:/usr/local/apache2/ssl.sh
 # abrimos el puerto 443
 iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables-save > /etc/sysconfig/iptables
+
+#[samba] compartir de window a linux
+# mount -t cifs //name-pc/dir-shared /media/shared -o user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
+vi /etc/fstab
+//name-pc/dir-shared /media/shared cifs user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
