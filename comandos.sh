@@ -191,3 +191,7 @@ vi /etc/fstab
 # other
 visudo
 %admin ALL=(ALL) NOPASSWD:ALL
+vi /etc/sysconfig/network
+HOSTNAME=namedomain
+vi /etc/hosts
+IP   namedomain  namedomain.localdomain
