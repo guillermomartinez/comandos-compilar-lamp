@@ -86,7 +86,7 @@ cd /usr/local/src/
 wget http://us2.php.net/get/php-5.3.29.tar.gz/from/this/mirror -O php-5.3.29.tar.gz
 tar zxvf php-5.3.29.tar.gz
 cd php-5.3.29
-./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/usr --with-gd --with-gettext --with-jpeg-dir=/usr --with-freetype-dir=/usr --with-kerberos --with-openssl --with-mcrypt=/usr/local/libmcrypt-2.5.8 --with-mhash --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pcre-regex --with-pear --with-png-dir=/usr --with-xsl --with-zlib --with-zlib-dir=/usr --with-iconv --enable-bcmath --enable-calendar --enable-exif --enable-ftp --enable-gd-native-ttf --enable-soap --enable-sockets --enable-mbstring --enable-zip --enable-wddx
+./configure --with-apxs2=/usr/local/apache2/bin/apxs --with-curl=/usr --with-gd --with-gettext --with-jpeg-dir=/usr --with-freetype-dir=/usr --with-kerberos --with-openssl --with-mcrypt=/usr/local/libmcrypt-2.5.8 --with-mhash --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pcre-regex --with-pear --with-png-dir=/usr --with-xsl --with-zlib --with-zlib-dir=/usr --with-iconv --enable-bcmath --enable-calendar --enable-exif --enable-ftp --enable-gd-native-ttf --enable-soap --enable-sockets --enable-mbstring --enable-zip --enable-wddx --with-pdo-mysql=/usr/local/mysql --enable-shared
 make
 make install
 #libtool --finish /root/php-5.3.29/libs
