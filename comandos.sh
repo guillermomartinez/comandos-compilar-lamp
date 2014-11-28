@@ -187,7 +187,7 @@ directory mode = 0770
 yum -y install cifs-utils
 # mount -t cifs //name-pc/dir-shared /media/shared -o user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
 vi /etc/fstab
-//name-pc/dir-shared /media/shared cifs user=userpc,password=xxxxxx,file_mode=0777,dir_mode=0777
+//name-pc-o-ip/dir-shared /media/shared cifs user=userpc,password=xxxxxx,nounix,noserverino,defaults,users,auto,file_mode=0777,dir_mode=0777
 
 # other
 visudo
