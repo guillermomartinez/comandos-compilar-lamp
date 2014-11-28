@@ -196,3 +196,21 @@ vi /etc/sysconfig/network
 HOSTNAME=namedomain
 vi /etc/hosts
 IP   namedomain  namedomain.localdomain
+
+#[APC]
+cd /usr/local/src/
+wget http://pecl.php.net/get/APC
+tar -xvf APC
+cd APC-X.X.X (replace with your downloaded version)
+phpize
+./configure
+make && make install
+
+vi /usr/local/lib/php.ini
+extension=apc.so
+apc.enabled=1
+apc.shm_size=1000M
+apc.ttl=7200
+apc.user_ttl=7200
+apc.enable_cli=1
+apc.max_file_size=5M
