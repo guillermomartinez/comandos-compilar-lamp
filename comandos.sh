@@ -14,6 +14,11 @@
 # # cabia MAC de ETH1 A ETH0
 # vim /etc/sysconfig/networking-scripts/ifcfg-eth0
 # service network restart
+# version de distro
+# cat /etc/issue
+#cat /etc/redhat-release
+#cat /etc/debian_version
+#uname -a
 
 # [MAKE]
 yum install make gcc automake zlib-devel bison cmake libtool wget gcc-c++ unzip ncurses-devel openssl-devel pcre-devel libxml2-devel curl-devel gd-devel libxslt-devel
