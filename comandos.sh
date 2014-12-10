@@ -214,3 +214,7 @@ apc.ttl=7200
 apc.user_ttl=7200
 apc.enable_cli=1
 apc.max_file_size=5M
+
+#[CHANGE DATE]
+ls /usr/share/zoneinfo/America/
+cp /usr/share/zoneinfo/America/Lima /etc/localtime
