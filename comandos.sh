@@ -19,6 +19,10 @@
 #cat /etc/redhat-release
 #cat /etc/debian_version
 #uname -a
+## montar
+vi /etc/init/vagrant-mounted.conf
+start on vagrant-mounted
+exec sudo service httpd start
 
 # [MAKE]
 yum install make gcc automake zlib-devel bison cmake libtool wget gcc-c++ unzip ncurses-devel openssl-devel pcre-devel libxml2-devel curl-devel gd-devel libxslt-devel
