@@ -227,3 +227,12 @@ apc.max_file_size=5M
 #[CHANGE DATE]
 ls /usr/share/zoneinfo/America/
 cp /usr/share/zoneinfo/America/Lima /etc/localtime
+
+#[NTP SINCRONIZAR TIME]
+sudo yum install ntp
+sudo /sbin/chkconfig ntpd on
+sudo /etc/init.d/ntpd start
+iptables -I INPUT -p udp --dport 123 -j ACCEPT
+iptables -I OUTPUT -p udp --sport 123 -j ACCEPT
+iptables-save > /etc/sysconfig/iptables
+/etc/init.d/iptables restart
