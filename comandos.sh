@@ -236,3 +236,15 @@ iptables -I INPUT -p udp --dport 123 -j ACCEPT
 iptables -I OUTPUT -p udp --sport 123 -j ACCEPT
 iptables-save > /etc/sysconfig/iptables
 /etc/init.d/iptables restart
+
+#[MYSQL REMOTE ACCESS]
+mysql -u root -p
+GRANT ALL PRIVILEGES on *.* TO 'root'@'%' IDENTIFIED BY 'PASSWORD' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+iptables -I INPUT 5 -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+iptables-save > /etc/sysconfig/iptables
+# SI NO FUNCIONA 
+vi /etc/my.cnf
+bind-address    = * # or IP
+# skip-networking
